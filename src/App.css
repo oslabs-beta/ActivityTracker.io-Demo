@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --heat-map-1: rgba(0, 0, 255, 1);    /* Cool Blue */
+  --heat-map-2: rgba(0, 51, 255, 1);   /* Blue */
+  --heat-map-3: rgba(0, 102, 255, 1);  /* Light Blue */
+  --heat-map-4: rgba(0, 153, 255, 1);  /* Cyan */
+  --heat-map-5: rgba(0, 204, 255, 1);  /* Light Cyan */
+  --heat-map-6: rgba(255, 255, 0, 1);  /* Yellow */
+  --heat-map-7: rgba(255, 204, 0, 1);  /* Orange */
+  --heat-map-8: rgba(255, 153, 0, 1);  /* Dark Orange */
+  --heat-map-9: rgba(255, 51, 0, 1);   /* Red-Orange */
+  --heat-map-10: rgba(255, 0, 0, 1);   /* Hot Red */
+}
+
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background: rgb(230, 230, 230);
+  color: rgb(55, 55, 55);
+}
+
+*, a, button {
+  font-family:Arial, Helvetica, sans-serif
+}
+
+button {
+  border: none;
+  height: 3rem;
+  width: 8rem;
+  border-radius: 100px;
+  color: rgb(55, 55, 55);
+  font-size: 1.3rem;
+  background: white;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  background: rgb(197, 197, 197);;
+}
+
+.app {
+  height: 50vh;
+  width: 50vw;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+  border-radius: 6px;
+  background: rgb(239, 239, 239);
+}
+
+.button-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
