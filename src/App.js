@@ -3,27 +3,17 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import HeatButton from './HeatButton';
 
+import useClickTracker from './UseClickTracker'; 
+
 function App() {
-  const [buttons, setButtons] = useState([])
-  //Assign a dataset.activty id to every button element
-  function assignIds() {
-      const everything = document.querySelectorAll("button");
-      let count = 0
-      for (const el of everything) {
-        el.dataset.activty = count;
-        count++;
-      }
-      setButtons(everything)
-      ;
-  }
+
+const apiKey = 'c14b15d0-50f1-70a8-8c72-cb7d3d1188ea'
+useClickTracker(apiKey);
 
   function handleLogin() {
-    console.log(buttons);
+    console.log('buttons');
   }
 
-  useEffect(()=> {
-    assignIds();
-  },[])
 
   return (
     <div className="app">
