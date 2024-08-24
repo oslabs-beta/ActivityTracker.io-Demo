@@ -7,8 +7,11 @@ import useClickTracker from './UseClickTracker';
 
 function App() {
 
-const apiKey = 'c14b15d0-50f1-70a8-8c72-cb7d3d1188ea'
-useClickTracker(apiKey);
+const apiKey = '1fd30d5c-55b3-467b-98a2-2ff67dd522d2'
+//exact website link!
+const webiste = 'testOne.com'
+
+useClickTracker(apiKey, webiste);
 
   function handleLogin() {
     console.log('buttons');
