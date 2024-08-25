@@ -7,7 +7,7 @@ import useClickTracker from './UseClickTracker';
 
 function App() {
 
-const apiKey = '1fd30d5c-55b3-467b-98a2-2ff67dd522d2'
+const apiKey = '1fd30d5c-55b3-467b-98a2-2ff67dd522d2' //dummy data api key
 //exact website link!
 const webiste = 'testOne.com'
 
