@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useClickTracker = (apiKey) => {
+const useClickTracker = (apiKey,website) => {
   function assignIds() {
     const everything = document.querySelectorAll("button");
     let count = 0;
@@ -14,11 +14,12 @@ const useClickTracker = (apiKey) => {
     const clickData = {
       x_coord: event.clientX,
       y_coord: event.clientY,
+      websiteName: website,
       element: event.target.tagName.toLowerCase(),
       elementName: event.target.innerHTML.toLowerCase(),
       activityId: event.target.dataset.activity,
       userAgent: navigator.userAgent,
-      platform: navigator.userAgentData.platform,
+      platform: navigator.userAgent.platform,
       pageUrl: window.location.href,
       created_at: new Date().toISOString(),
     };
