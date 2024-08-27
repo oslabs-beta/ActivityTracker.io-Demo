@@ -19,7 +19,7 @@ const useClickTracker = (apiKey,website) => {
       elementName: event.target.innerHTML.toLowerCase(),
       activityId: event.target.dataset.activity,
       userAgent: navigator.userAgent,
-      platform: navigator.userAgentData.platform,
+      platform: navigator.userAgent.platform,
       pageUrl: window.location.href,
       created_at: new Date().toISOString(),
     };
