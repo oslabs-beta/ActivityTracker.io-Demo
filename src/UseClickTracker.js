@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-const useClickTracker = (apiKey,website) => {
+const useClickTracker = (apiKey, website) => {
+  const visitDataSent = useRef(false);
+
   function assignIds() {
     const everything = document.querySelectorAll("button");
     let count = 0;
@@ -19,7 +21,7 @@ const useClickTracker = (apiKey,website) => {
       elementName: event.target.innerHTML.toLowerCase(),
       activityId: event.target.dataset.activity,
       userAgent: navigator.userAgent,
-      platform: navigator.userAgent.platform,
+      platform: navigator.platform,
       pageUrl: window.location.href,
       created_at: new Date().toISOString(),
     };
@@ -43,9 +45,42 @@ const useClickTracker = (apiKey,website) => {
     }
   };
 
-  useEffect(() => {
-    assignIds();
+  const sendVisitData = async () => {
+    if (!document.referrer) {
+      console.log("Referrer is empty, not sending visit data.");
+      return;
+    }
+    const visitData = {
+      websiteName: website,
+      referrer: document.referrer,
+    };
 
+    const visitEndpoint = "http://localhost:8080/api/click-data/visits";
+
+    try {
+      const response = await fetch(visitEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(visitData),
+      });
+
+      const data = await response.json();
+      console.log("Visit data sent successfully:", data);
+    } catch (error) {
+      console.error("Error sending visit data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (!visitDataSent.current) {
+      sendVisitData();
+      visitDataSent.current = true;
+    }
+
+    assignIds();
     document.addEventListener("click", sendClickData);
 
     return () => {
