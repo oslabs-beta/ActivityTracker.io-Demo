@@ -1,15 +1,16 @@
-
-import { useEffect, useState } from 'react';
 import './App.css';
 import HeatButton from './HeatButton';
 
-import useClickTracker from './UseClickTracker'; 
+
+// import useClickTracker from './UseClickTracker'; 
+import useClickTracker from 'os-analytics'
+
 
 function App() {
 
-const apiKey = '49b5a33b-5c40-4a16-a33e-9dc5dcca29e2' //dummy data api key
+const apiKey = process.env.REACT_APP_API_KEY
 //exact website link!
-const webiste = 'test12.com'
+const webiste = 'test1.com'
 
 useClickTracker(apiKey, webiste);
 

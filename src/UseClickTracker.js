@@ -14,11 +14,10 @@ const useClickTracker = (apiKey, website) => {
 
   const sendClickData = async (event) => {
     const clickData = {
-      x_coord: event.clientX,
-      y_coord: event.clientY,
+      x_coord: event.clientX / window.innerWidth,
+      y_coord: event.clientY/ window.innerHeight,
       websiteName: website,
       element: event.target.tagName.toLowerCase(),
-      elementName: event.target.innerHTML.toLowerCase(),
       activityId: event.target.dataset.activity,
       userAgent: navigator.userAgent,
       platform: navigator.platform,
@@ -39,6 +38,18 @@ const useClickTracker = (apiKey, website) => {
       });
 
       const data = await response.json();
+      // height of the taskbar is 87 px
+      console.log('window.innerHeight:', window.innerHeight)
+      console.log('window.outerHeight:', window.outerHeight)
+      console.log('window.innerWidth:', window.innerWidth)
+      console.log('event.clientY:',event.clientY)
+      console.log('event.clientX:',event.clientX)
+      console.log('window.screenLeft:',window.screenLeft)
+      console.log('window.screenTop:',window.screenTop)
+      console.log('window.heightpercent:', event.clientY / window.innerHeight)
+      console.log('window.widthpercent:', event.clientX / window.innerWidth)
+      console.log('window.heightpercent:', (event.clientY + window.screenTop) / window.innerHeight)
+      console.log('window.widthpercent:', (event.clientX + window.screenLeft) / window.innerWidth)
       console.log("Click data sent successfully:", data);
     } catch (error) {
       console.error("Error sending click data:", error);
